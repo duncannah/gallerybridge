@@ -14,6 +14,7 @@ COPY --chown=bun:bun package.json ./package.json
 COPY --chown=bun:bun src ./src
 
 ENV NODE_ENV=production
+ENV SEARCH_PATH=/library
 
 USER bun
 
