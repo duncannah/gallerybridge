@@ -15,7 +15,7 @@ const thumbnailCacheDirectory: string =
 let sharpModule: Promise<typeof import("sharp")> | undefined;
 
 // Only import sharp when needed
-export const loadSharp = async (): Promise<(typeof import("sharp"))["default"]> => {
+export const loadSharp = async (): Promise<typeof import("sharp")["default"]> => {
 	sharpModule ??= import("sharp");
 	const { default: sharp } = await sharpModule;
 

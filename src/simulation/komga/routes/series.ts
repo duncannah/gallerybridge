@@ -48,10 +48,12 @@ export const seriesRoutes = (state: KomgaState): Hono => {
 
 	app.get("/:seriesId/thumbnail", async (c) => {
 		const artist = await findSeries(state, c.req.param("seriesId"));
-		const [entry] = artist.entries;
+		const entry = artist.entries.at(-1);
+
 		if (!entry) {
 			return imageResponse(undefined);
 		}
+
 		const images = await entry.getImages();
 
 		return imageResponse(images[0], true);
