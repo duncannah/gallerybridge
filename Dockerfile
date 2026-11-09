@@ -24,4 +24,12 @@ USER bun
 
 EXPOSE 3000
 
+HEALTHCHECK \
+	--interval=1m \
+	--timeout=5s \
+	--start-period=1m \
+	--start-interval=5s \
+	--retries=3 \
+	CMD ["wget", "-q", "-O", "/dev/null", "http://127.0.0.1:3000/"]
+
 CMD ["bun", "run", "src/index.ts"]
