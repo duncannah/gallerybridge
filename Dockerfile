@@ -15,6 +15,10 @@ COPY --chown=bun:bun src ./src
 
 ENV NODE_ENV=production
 ENV SEARCH_PATH=/library
+ENV THUMBNAIL_CACHE_PATH=/cache/thumbnails
+
+RUN mkdir -p /cache && chown bun:bun /cache
+VOLUME ["/cache"]
 
 USER bun
 
