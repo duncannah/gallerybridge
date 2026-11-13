@@ -17,7 +17,7 @@ ENV NODE_ENV=production
 ENV SEARCH_PATH=/library
 ENV THUMBNAIL_CACHE_PATH=/cache/thumbnails
 
-RUN mkdir -p /cache && chown bun:bun /cache
+RUN mkdir -p /cache && chown bun:0 /cache && chmod g=u /cache
 VOLUME ["/cache"]
 
 USER bun
